@@ -1,0 +1,26 @@
+-# サイドバー
+.saide-bar
+  -# サイドバーのヘッダー
+  .saide-bar__header
+    -# ヘッダーの項目
+    .saide-bar__header__top-items
+      -# 項目の名前（投稿者名）
+      .saide-bar__header__top-items__name
+        masa
+      -# 項目のアイコン
+      .saide-bar__header__top-items__icons
+        = link_to "#", class: "saide-bar__header__top-items__icons__new-btn" do
+          = icon('far', 'edit')
+        = link_to "#", class: "saide-bar__header__top-items__icons__setting-btn" do
+          = icon('fas', 'cog')
+  -# グループリスト
+  .saide-bar__group-list
+    -# グループの情報
+    .saide-bar__group-list__group-status
+      -# グループ名
+      .saide-bar__group-list__group-status__group-name
+        techchamp
+      -# グループからのメッセージ
+      .saide-bar__group-list__group-status__group-message
+        まだメッセージがありません
+
