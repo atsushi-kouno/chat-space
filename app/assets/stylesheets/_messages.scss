@@ -1,0 +1,198 @@
+* {
+  box-sizing: border-box;
+}
+// 全画面
+// ファイル名 → index.html.haml
+.wrapper{
+  display: flex;
+  height: 100vh;
+}
+
+// サイドバー
+// ファイル名 → _side_bar.html.haml
+.saide-bar{
+  width: 300px;
+  // サイドバーのヘッダー
+  &__header{
+    height: 100px;
+    background-color: #253141;
+    display: flex;
+    align-items: center;
+    // ヘッダーの項目
+    &__top-items{
+      height: 20px;
+      width: 260px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      // 項目の名前（投稿者名）
+      &__name{
+        height: 20px;
+        width: 60px;
+        font-size: 16px;
+        color: #ffffff;
+        font-weight: bold;
+      }
+      // 項目のアイコン
+      &__icons{
+        height: 20px;
+        width: 60px;
+        display: flex;
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+        &__new-btn{
+          color: #ffffff;
+        }
+        &__setting-btn{
+          color: #ffffff;
+          margin-left: 5px;
+        }
+        
+      }
+    }
+  }
+  // グループリスト
+  &__group-list{
+   height: calc(100vh - 100px); 
+   background-color: #2f3e51;
+    // グループの情報
+    &__group-status{
+      height: 100px;
+      // グループ名
+      &__group-name{
+        height: 20px;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: bold;
+        padding-top: 20px;
+        padding-left: 20px;
+      }
+      // グループからのメッセージ
+      &__group-message{
+        height: 15px;
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: bold;
+        padding-top: 25px;
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+// メイン画面（チャット画面）
+// ファイル名 → _main_chat.html.haml
+.chat-main{
+  width: calc(100vw - 300px);
+  // ヘッダー
+  &__header{
+    height: 100px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    // グループ情報
+    &__group-status{
+      // グループ名
+      &__group-name{
+        font-size: 20px;
+        color: #333333;
+        padding-top: 15px;
+      }
+      // メンバー名
+      &__member-name{
+        padding-top: 15px;
+        font-size: 12px;
+        color: #999999;
+      }
+    }
+    // グループ編集
+    &__group-edit{
+      height: 40px;
+      width: 72px;
+      padding-top: 10px;
+      padding-left: 20px;
+      margin-top: 10px;
+      border: solid 1px #38aef0;
+      .edit-btn {
+        color: #38aef0;
+        text-decoration: none;
+      }
+
+    }
+  }
+  // メッセージ画面
+  &__message-list{
+    height: calc(100vh - 100px - 90px);
+    background-color: #fafafa;
+    padding: 35px 40px;
+    // 投稿者情報
+    .message-upper{
+      display: flex;
+      margin-bottom: 12px;
+      // 投稿者"名"
+      &__talker{
+        font-weight: bold;
+        font-size: 16px;
+        color: #333333;
+      }
+      // 投稿日
+      &__day{
+        font-size: 12px;
+        color: #999999;
+        margin-left: 10px;
+      }
+    }
+    // 投稿内容
+    .message-talk{
+      font-size: 14px;
+      color: #434a54;
+      margin-bottom: 46px;
+    }
+  }
+  // チャットの入力全般
+  &__message-form{
+    height: 90px;
+    background-color: #d2d2d2;
+    padding: 20px 40px;
+    display: flex;
+    .input-box{
+      height: 50px;
+      width: 100%;
+      position: relative;
+      background-color: #ffffff;
+      // 文字入力
+      &__message{
+        color: #434a54;
+        height: 50px;
+        width: 100%;
+        padding: 0 40px 0 10px;
+      }
+      // 画像入力
+      &__image{
+        font-size: 1.5rem;
+        position: absolute;
+             top: 10px;
+           right: 10px;
+        color: #000000;
+        cursor: pointer;
+        // 画像ファイルの選択
+        &__file{
+          display: none;
+        }
+      }
+    }
+    // 送信ボタン
+    .send-btn{
+      background-color: #38aef0;
+      color: #ffffff;
+      width: 100px;
+      height: 50px;
+      margin-left: 15px;
+      text-align: center;
+      line-height: 50px;
+      cursor: pointer;
+    }
+  }
+}
