@@ -16,13 +16,12 @@
   -# グループリスト
   .saide-bar__group-list
     - current_user.groups.each do |group|
-      -# グループ情報
-      .saide-bar__group-list__group-status
-        =link_to "edit","#"
+      -# グループ情報      
+      = link_to group_messages_path(group),class:"saide-bar__group-list__group-status" do
         -# グループ名
         .saide-bar__group-list__group-status__group-name 
           = group.name
         -# グループからのメッセージ
         .saide-bar__group-list__group-status__group-message
-          まだメッセージがありません
+          = group.show_last_message
 

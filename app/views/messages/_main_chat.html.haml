@@ -1,48 +1,65 @@
--# メイン画面（チャット画面）
-.chat-main
+-#  メイン画面（チャット画面）
+.chat-main                                                            
   -# ヘッダー
   .chat-main__header
-    -# グループ情報
+    -# グループ情報                                           
     .chat-main__header__group-status
       -# グループ名
       .chat-main__header__group-status__group-name
-        test
+        = @group.name
       -# メンバー名
       .chat-main__header__group-status__member-name
-        Member:masa
+        Member:
+        - @group.users.each do |user|
+          = user.name
     -# グループ編集
     .chat-main__header__group-edit
-      = link_to "#", class: "edit-btn" do
-        Edit
+      = link_to edit_group_path(@group), class: "edit-btn" do
+        Exit
   -# メッセージ画面
   .chat-main__message-list
     -# 投稿者情報
-    .message-upper
-      -# 投稿者"名"
-      .message-upper__talker
-        masa
-      -# 投稿日
-      .message-upper__day
-        2019/11/20(Wed) 17:43:34
-    -# 投稿内容
-    .message-talk
-      おはよう
+    - @messages.each do |message|
+      .message-upper
+        -# 投稿者"名"
+        .message-upper__talker
+          = message.user.name
+        -# 投稿日
+        .message-upper__day
+          = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+        -# 投稿内容      
+      .message-talk
+        = message.content
   -# チャットの入力全般
   .chat-main__message-form
-    .input-box
-      -# 文字入力
-      %input.input-box__message{type: "text",
-                                name: "message[content]", 
-                                value: "",
-                                placeholder: "type a message"}
-      -# 画像入力
-      %label.input-box__image{for: "massage_image"}
-        = icon('far', 'image')
-        -# 画像ファイルの選択
-        %input.input-box__image__file{type: "file",
-                                      name: "message[image]",
-                                      id: "massage_image"}
-    -# 送信ボタン
-    %input.send-btn{type: "submit",
-                    name: "comit",
-                    valu: "Send"}
+    = form_for [@group, @message] do |f|
+      .input-box
+        -# 文字入力
+        = f.text_field :content, class: 'input-box__message', placeholder: 'type a message'
+        -# 画像入力
+        = f.label :image, class: 'input-box__image' do
+          = icon('far', 'image')
+          -# 画像ファイルの選択
+          = f.file_field :image, class: 'input-box__image__file'
+      -# 送信ボタン
+      = f.submit 'Send', class: 'send-btn'
+            
+  -# -# チャットの入力全般
+  -# .chat-main__message-form
+  -#   .input-box
+  -#     -# 文字入力
+  -#     %input.input-box__message{type: "text",
+  -#                               name: "message[content]", 
+  -#                               value: "",
+  -#                               placeholder: "type a message"}
+  -#     -# 画像入力
+  -#     %label.input-box__image{for: "massage_image"}
+  -#       = icon('far', 'image')
+  -#       -# 画像ファイルの選択
+  -#       %input.input-box__image__file{type: "file",
+  -#                                     name: "message[image]",
+  -#                                     id: "massage_image"}
+  -#   -# 送信ボタン
+  -#   %input.send-btn{type: "submit",
+  -#                   name: "comit",
+  -#                   valu: "Send"}

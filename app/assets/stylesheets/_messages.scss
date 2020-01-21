@@ -28,10 +28,11 @@
       // 項目の名前（投稿者名）
       &__name{
         height: 20px;
-        width: 60px;
+        width: calc(100% - 60px);
         font-size: 16px;
         color: #ffffff;
         font-weight: bold;
+        
       }
       // 項目のアイコン
       &__icons{
@@ -54,8 +55,8 @@
   }
   // グループリスト
   &__group-list{
-   height: calc(100vh - 100px); 
-   background-color: #2f3e51;
+  height: calc(100vh - 100px); 
+  background-color: #2f3e51;
     // グループの情報
     &__group-status{
       height: 100px;
@@ -67,6 +68,7 @@
         font-weight: bold;
         padding-top: 20px;
         padding-left: 20px;
+        text-decoration: none;
       }
       // グループからのメッセージ
       &__group-message{
@@ -76,6 +78,7 @@
         font-weight: bold;
         padding-top: 25px;
         padding-left: 20px;
+        text-decoration: none;
       }
     }
   }
@@ -127,6 +130,7 @@
     height: calc(100vh - 100px - 90px);
     background-color: #fafafa;
     padding: 35px 40px;
+    overflow: scroll;
     // 投稿者情報
     .message-upper{
       display: flex;
@@ -152,7 +156,7 @@
     }
   }
   // チャットの入力全般
-  &__message-form{
+  .new_message{
     height: 90px;
     background-color: #d2d2d2;
     padding: 20px 40px;
