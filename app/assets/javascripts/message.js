@@ -33,8 +33,6 @@ $(function(){
       };
     }
     $('#new_message').on('submit', function(e){
-      console.log("success")
-    //console.log('イベント')
     e.preventDefault()
     var formData = new FormData(this);
     var url = $(this).attr('action');
@@ -48,7 +46,6 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      console.log(html);
       $('.chat-main__message-list').append(html);
       $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
       $('.new_message')[0].reset();
