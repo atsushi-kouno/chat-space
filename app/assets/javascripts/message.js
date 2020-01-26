@@ -64,7 +64,6 @@ $(function(){
       alert("メッセージ受信に失敗しました");
     });
   };
-  
   $('#new_message').on('submit', function(e){
     e.preventDefault()
     var formData = new FormData(this);

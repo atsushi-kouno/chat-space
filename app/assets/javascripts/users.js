@@ -7,7 +7,6 @@ $(function(){
       </div>
     `;
     $("#user-search-result").append(html);
-    //console.log(html);
   }
 
   function addNoUser() {
@@ -17,7 +16,6 @@ $(function(){
       </div>
     `;
     $("#user-search-result").append(html);
-    //console.log(html);
   }
 
   function addDeleteUser(name, id) {
@@ -33,7 +31,6 @@ $(function(){
     let html = `<input value="${userId}" name="group[user_ids][]" type="hidden" id="group_user_ids_${userId}" />`;
     $(`#${userId}`).append(html);
   }
-
   $("#user-search-field").on("keyup", function(){
     var input = $("#user-search-field").val();    //フォームの値を取得して変数に代入する
     $.ajax({
@@ -60,10 +57,8 @@ $(function(){
   })
 
   $(document).on('click', ".chat-group-user__btn--add", function(){
-    //console.log("発火")
     const userName = $(this).attr("data-user-name");
     const userId = $(this).attr("data-user-id");
-    //console.log(userName)
     $(this)
       .parent()
       .remove();
