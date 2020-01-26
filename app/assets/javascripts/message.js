@@ -58,50 +58,13 @@ $(function(){
         //メッセージが入ったHTMLに、入れ物ごと追加
         $('.chat-main__message-list').append(insertHTML);
         $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
-        $("#new_message")[0].reset();
-        $(".send-btn").prop("disabled", false);
       }
     })
     .fail(function() {
       alert("メッセージ受信に失敗しました");
     });
   };
-  var buildHTML = function(message) {
-    if (message.content) {
-      //同様に、data-idが反映されるようにしている
-      var html = 
-        `<div class="message" data-message-id=${message.id}>
-          <div class="message-upper">
-            <div class="message-upper__talker">
-              ${message.user_name}
-            </div>
-            <div class="message-upper__day">
-              ${message.created_at}
-            </div>
-          </div>
-          <div class="message-talk">
-            ${message.content}
-          </div>
-        </div>`
-    } else if (message.image) {
-      //同様に、data-idが反映されるようにしている
-      var html = 
-        `<div class="message" data-message-id=$message.id}>
-          <div class="message-upper">
-            <div class="message-upper__talker">
-              ${message.user_name}
-            </div>
-            <div class="message-upper__day">
-              ${message.created_at}
-            </div>
-          </div>
-          <div class="message-talk">
-            <img src=${message.image}>
-          </div>
-        </div>`
-    };
-    return html;
-  };
+  
   $('#new_message').on('submit', function(e){
     e.preventDefault()
     var formData = new FormData(this);
