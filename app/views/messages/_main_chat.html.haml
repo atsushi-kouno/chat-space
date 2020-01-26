@@ -15,21 +15,22 @@
     -# グループ編集
     .chat-main__header__group-edit
       = link_to edit_group_path(@group), class: "edit-btn" do
-        Exit
+        Edit
   -# メッセージ画面
   .chat-main__message-list
     -# 投稿者情報
     - @messages.each do |message|
-      .message-upper
-        -# 投稿者"名"
-        .message-upper__talker
-          = message.user.name
-        -# 投稿日
-        .message-upper__day
-          = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
-        -# 投稿内容      
-      .message-talk
-        = message.content
+      .message{data: {message: {id: message.id}}}
+        .message-upper
+          -# 投稿者"名"
+          .message-upper__talker
+            = message.user.name
+          -# 投稿日
+          .message-upper__day
+            = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+          -# 投稿内容      
+        .message-talk
+          = message.content
   -# チャットの入力全般
   .chat-main__message-form
     = form_for [@group, @message] do |f|
